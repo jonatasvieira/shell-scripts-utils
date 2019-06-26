@@ -36,8 +36,11 @@ createrepo /data/repos201602/extras/
 createrepo /data/repos201602/updates/
 createrepo /data/repos201602/epel/ -g comps.xml
 
-echo "Remove all files from /etc/yum.repos.d/"
-mv /etc/yum.repos.d/* /root/
+echo "Create disabled directory to store default repositorioes"
+mkdir -p /etc/yum.repos.d/disabled/
+
+echo "Move all repos to /etc/yum.repos.d/disabled"
+mv /etc/yum.repos.d/* /etc/yum.repos.d/disabled/
 
 echo "Create new file /etc/yum.repos.d/internal-repos.repo"
 echo "[base]
